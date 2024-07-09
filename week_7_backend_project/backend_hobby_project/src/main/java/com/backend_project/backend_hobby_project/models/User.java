@@ -151,4 +151,7 @@ public class User {
     public void setAvailability(List<DaysOfTheWeek> availability) {
         this.availability = availability;
     }
+
 }
+
+
