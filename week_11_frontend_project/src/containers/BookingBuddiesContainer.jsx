@@ -35,6 +35,15 @@ const BookingBuddiesContainer = () => {
       setAllHobbies(data);
     }   
 
+    const bookingLoader = ({params}) => {
+      const booking = allBookings.find(booking => {
+      
+        return booking.id === parseInt(params.id)
+        
+    })
+    return booking;
+    }
+
     useEffect(() => {
       fetchAllBookings(),
       fetchAllVenues(),
@@ -49,7 +58,7 @@ const BookingBuddiesContainer = () => {
                 element: <Navigator />,
                 children : [
                   {
-                    path: "/",
+                    path: "/",           
                     element: <BookingList allBookings={allBookings}/>,
                   },
                   {
@@ -58,6 +67,7 @@ const BookingBuddiesContainer = () => {
                   },
                   {
                     path: "/:id/update-booking",
+                    loader: bookingLoader,
                     element: <UpdateBooking allBookings={allBookings} allVenues={allVenues} allUsers={allUsers} allHobbies={allHobbies}/>
                   }
                 ]
