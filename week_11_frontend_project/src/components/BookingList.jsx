@@ -1,7 +1,15 @@
 const BookingList = ({allBookings}) => {
+    
+    
+    
+    
     return (
         <>
-            <p>Booking List</p>
+            <h1>Events Dashboard</h1>
+            <h2>Upcoming bookings</h2>
+            <label htmlFor="">Search</label>
+            <input type="text" placeholder="search..."/>
+            <input type="submit" />
         </>
     )
 }
