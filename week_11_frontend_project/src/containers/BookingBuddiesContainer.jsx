@@ -57,7 +57,7 @@ const BookingBuddiesContainer = () => {
                     element: <CreateBooking allBookings={allBookings} allVenues={allVenues} allUsers={allUsers} allHobbies={allHobbies}/>
                   },
                   {
-                    path: "/update-booking",
+                    path: "/:id/update-booking",
                     element: <UpdateBooking allBookings={allBookings} allVenues={allVenues} allUsers={allUsers} allHobbies={allHobbies}/>
                   }
                 ]
@@ -67,7 +67,11 @@ const BookingBuddiesContainer = () => {
 
     return (
         <>
-            <RouterProvider router={router}/>
+            <header>Placeholder header</header>
+            <main>
+              <RouterProvider router={router}/>
+            </main>
+            <footer>Placeheader footer</footer>
         </>
     )
 }
