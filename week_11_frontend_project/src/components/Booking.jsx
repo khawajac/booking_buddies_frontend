@@ -16,7 +16,7 @@ const Booking = ( {booking} ) => {
             <p>date of booking</p>
             {/* <p>No of attendees: {users.length}</p> */}
             <button>delete</button>
-            <li><Link to = "/update-booking">Update Booking</Link></li>
+            <li><Link to = {`/${booking.id}/update-booking`}>Update Booking</Link></li>
         </>
     )
 }
