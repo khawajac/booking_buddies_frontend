@@ -67,7 +67,11 @@ const BookingBuddiesContainer = () => {
 
     return (
         <>
-            <RouterProvider router={router}/>
+            <header>Placeholder header</header>
+            <main>
+              <RouterProvider router={router}/>
+            </main>
+            <footer>Placeheader footer</footer>
         </>
     )
 }

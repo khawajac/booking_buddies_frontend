@@ -9,7 +9,7 @@ const Navigator = () => {
                     <li><Link to = "/update-booking">Update Booking</Link></li>
                 </ul>
             </nav>
-        <Outlet/>
+            <Outlet/>
         </>
     )
 }
