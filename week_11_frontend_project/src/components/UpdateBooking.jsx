@@ -1,16 +1,49 @@
-import {useLoaderData} from 'react-router-dom'
+import {useLoaderData, useNavigate} from 'react-router-dom'
 import {useState} from 'react'
 
-const UpdateBooking = ({allBookings, allVenues,allUsers, allHobbies, setAllBookings}) => {
+const UpdateBooking = ({allBookings, allVenues,allUsers, allHobbies, setAllBookings, updateTime, updateDate, updateVenue, updateHobby}) => {
 //    pass in setAllBookings
+
+    const navigate = useNavigate();
 
     const booking = useLoaderData()
 
-    const [time, setTime] = useState("");
-    const [date, setDate] = useState("");
-    const [venue, setVenue] = useState(0);
-    const [hobby, setHobby] = useState(0);
+    // const [time, setTime] = useState("");
+    // const [date, setDate] = useState("");
+    // const [venue, setVenue] = useState(0);
+    // const [hobby, setHobby] = useState(0);
+    const [stateBooking, setstateBooking] = useState(
+        {
+            time: booking.time,
+            date: booking.date,
+            venueId: booking.venue.id,
+            hobbyId: booking.hobby.id
+        }
+    )
    
+    const handleTextValueChange = (e) => {
+        const propertyName = e.target.name;
+        const copiedBooking = { ...stateBooking };
+        copiedBooking[propertyName] = e.target.value;
+        setstateBooking(copiedBooking);
+    }
+
+    const handleNumValueChange = (e) => {
+        const propertyName = e.target.name;
+        const copiedBooking = { ...stateBooking };
+        copiedBooking[propertyName] = parseInt(e.target.value);
+        setstateBooking(copiedBooking);
+    }
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        updateTime(stateBooking, stateBooking.time);
+        updateDate(stateBooking, stateBooking.date);
+        updateVenue(stateBooking, stateBooking.venueId);
+        updateHobby(stateBooking, stateBooking.hobbyId);
+        navigate("/");
+    }
+
     return (
         booking ? 
 
@@ -23,28 +56,34 @@ const UpdateBooking = ({allBookings, allVenues,allUsers, allHobbies, setAllBooki
             </article>
 
             <article>
-                <form>
+                <form onSubmit={handleFormSubmit}>
                     <label htmlFor="time">Time</label>
                     <input 
-                        onChange={(e) => setTime(e.target.value)}
+                        name="name"
+                        onChange={handleTextValueChange}
                         type="text" 
                         placeholder="Input time e.g. 18:00..."/>
                     <label htmlFor="date">Date</label>
                     <input 
-                        onChange={(e) => setDate(e.target.value)}
+                        name="name"
+                        onChange={handleTextValueChange}
                         type="text" 
-                        placeholder="Input date YYYY/MM/DD..."/>
+                        placeholder="Input date DD/MMYYYY..."/>
                     <label htmlFor="venue">Venue</label>
                     <input 
-                        onChange={(e) => setVenue(e.target.value)}
-                        type="text" 
+                        name="name"
+                        onChange={handleNumValueChange}
+                        type="number" 
                         placeholder="Pick venue..."/>
                     <label htmlFor="hobby">Hobby</label>
                     <input 
-                        onChange={(e) => setHobby(e.target.value)}
-                        type="text" 
+                        name="name"
+                        onChange={handleNumValueChange}
+                        type="number" 
                         placeholder="Pick hobby..."/>
+                    <input type="submit" />
                 </form>
+
             </article>
         </>
         :

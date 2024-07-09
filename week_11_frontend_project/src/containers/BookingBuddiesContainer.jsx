@@ -44,6 +44,38 @@ const BookingBuddiesContainer = () => {
     return booking;
     }
 
+    const updateTime = async (booking, time) => {
+      await fetch(`http://localhost:8080/bookings/${booking.id}?property=time`, {
+          method: "PATCH",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify(time)
+      });
+    }
+
+    const updateDate = async (booking, date) => {
+      await fetch(`http://localhost:8080/bookings/${booking.id}?property=date`, {
+          method: "PATCH",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify(date)
+      });
+    }
+
+    const updateVenue = async (booking, venueId) => {
+      await fetch(`http://localhost:8080/bookings/${booking.id}?property=venueId`, {
+          method: "PATCH",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify(venueId)
+      });
+    }
+
+    const updateHobby = async (booking, hobbyId) => {
+      await fetch(`http://localhost:8080/bookings/${booking.id}?property=hobbyId`, {
+          method: "PATCH",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify(hobbyId)
+      });
+    }
+
     useEffect(() => {
       fetchAllBookings(),
       fetchAllVenues(),
@@ -68,7 +100,7 @@ const BookingBuddiesContainer = () => {
                   {
                     path: "/:id/update-booking",
                     loader: bookingLoader,
-                    element: <UpdateBooking allBookings={allBookings} allVenues={allVenues} allUsers={allUsers} allHobbies={allHobbies} setAllBookings={setAllBookings}/>
+                    element: <UpdateBooking allBookings={allBookings} allVenues={allVenues} allUsers={allUsers} allHobbies={allHobbies} setAllBookings={setAllBookings} updateTime={updateTime} updateDate={updateDate} updateVenue={updateVenue} updateHobby={updateHobby}/>
                   }
                 ]
               }
