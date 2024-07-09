@@ -1,4 +1,4 @@
-const BookingForm = () => {
+const CreateBooking = () => {
     return (
         <>
             <p>Booking Form</p>
@@ -6,4 +6,4 @@ const BookingForm = () => {
     )
 }
 
-export default BookingForm
+export default CreateBooking
