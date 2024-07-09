@@ -1,4 +1,4 @@
-const UpdateBooking = () => {
+const UpdateBooking = ({allBookings, allVenues,allUsers, allHobbies}) => {
     return (
         <>
             <p>Update booking</p>

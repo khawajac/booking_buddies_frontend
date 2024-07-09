@@ -3,7 +3,7 @@ import Navigator from '../components/Navigator'
 import CreateBooking from '../components/CreateBooking'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import UpdateBooking from "../components/UpdateBooking"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 const BookingBuddiesContainer = () => {
 
@@ -50,15 +50,15 @@ const BookingBuddiesContainer = () => {
                 children : [
                   {
                     path: "/",
-                    element: <BookingList />,
+                    element: <BookingList allBookings={allBookings}/>,
                   },
                   {
                     path: "/create-booking",
-                    element: <CreateBooking />
+                    element: <CreateBooking allBookings={allBookings} allVenues={allVenues} allUsers={allUsers} allHobbies={allHobbies}/>
                   },
                   {
                     path: "/update-booking",
-                    element: <UpdateBooking />
+                    element: <UpdateBooking allBookings={allBookings} allVenues={allVenues} allUsers={allUsers} allHobbies={allHobbies}/>
                   }
                 ]
               }

@@ -1,4 +1,4 @@
-const CreateBooking = () => {
+const CreateBooking = ({allBookings, allVenues,allUsers, allHobbies}) => {
     return (
         <>
             <p>Booking Form</p>
