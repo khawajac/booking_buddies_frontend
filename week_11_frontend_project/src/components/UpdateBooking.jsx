@@ -8,10 +8,6 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
 
     const booking = useLoaderData()
 
-    // const [time, setTime] = useState("");
-    // const [date, setDate] = useState("");
-    // const [venue, setVenue] = useState(0);
-    // const [hobby, setHobby] = useState(0);
     const userIds = booking.users.map((user) => {
         return user.id;
     })
@@ -24,9 +20,6 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
             hobbyId: booking.hobby.id,
         }
     )
-
-
-   
 
     const usersNames = booking.users.map((user) => {
         return <p key={user.id}> {user.name}</p>

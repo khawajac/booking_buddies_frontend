@@ -44,14 +44,22 @@ const BookingBuddiesContainer = () => {
     return booking;
     }
 
-    const updateBooking = async (booking, bookingDTO) => {
-      console.log(booking);
-      console.log(bookingDTO); 
+    const updateBooking = async (booking, bookingDTO) => { 
       await fetch(`http://localhost:8080/bookings/${booking.id}`, {
           method: "PUT",
           headers: {"Content-Type": "application/json"},
           body: JSON.stringify(bookingDTO)
       });
+    }
+
+    const postBooking = async (newBooking) => {
+      await fetch (`http://localhost:8080/bookings`, {
+        method: "POST", 
+        headers: {"Content-Type": "application/json"},
+          body: JSON.stringify(newBooking)
+      }); 
+      const savedBooking = await response.json();
+      setAllBookings([...allBookings, savedBooking]); 
     }
 
     
@@ -75,7 +83,7 @@ const BookingBuddiesContainer = () => {
                   },
                   {
                     path: "/create-booking",
-                    element: <CreateBooking allBookings={allBookings} allVenues={allVenues} allUsers={allUsers} allHobbies={allHobbies}/>
+                    element: <CreateBooking allVenues={allVenues} allUsers={allUsers} allHobbies={allHobbies} postBooking={postBooking}/>
                   },
                   {
                     path: "bookings/:id/update-booking",
