@@ -1,7 +1,7 @@
 import {useLoaderData, useNavigate} from 'react-router-dom'
 import {useState} from 'react'
 
-const UpdateBooking = ({allBookings, allVenues,allUsers, allHobbies, setAllBookings, updateBooking}) => {
+const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBookings, updateBooking}) => {
 //    pass in setAllBookings
 
     const navigate = useNavigate();
@@ -22,11 +22,21 @@ const UpdateBooking = ({allBookings, allVenues,allUsers, allHobbies, setAllBooki
         }
     )
    
-    const userIds = booking.users.map((user) => {
+    const usersNames = booking.users.map((user) => {
         return <p key={user.id}> {user.name}</p>
-
     })
 
+    const venueOptions = allVenues.map((venue) => {
+        return <option key={venue.id}>{venue.name}</option>
+    })
+
+    const hobbyOptions = allHobbies.map((hobby) => {
+        return <option key={hobby.id}>{hobby.name}</option>
+    })
+
+    const userOptions = allUsers.map((user) => {
+        return <option key={user.id}>{user.name}</option>
+    })
 
 
     const handleTextValueChange = (e) => {
@@ -53,6 +63,8 @@ const UpdateBooking = ({allBookings, allVenues,allUsers, allHobbies, setAllBooki
         navigate("/");
     }
 
+
+
     return (
         booking ? 
 
@@ -60,7 +72,7 @@ const UpdateBooking = ({allBookings, allVenues,allUsers, allHobbies, setAllBooki
             <article>
                 <p>{booking.time}</p>
                 <p>{booking.date}</p>
-                {userIds}
+                {usersNames}
                 <p>{booking.venue.name}</p>
                 <p>{booking.hobby.name}</p>
             </article>
@@ -81,21 +93,40 @@ const UpdateBooking = ({allBookings, allVenues,allUsers, allHobbies, setAllBooki
                         onChange={handleTextValueChange}
                         type="text" 
                         placeholder="Input date DD/MM/YYYY..."/>
+
+                    <label htmlFor="usersIds">Users</label>
+                    <select 
+                        name="usersIds" 
+                        id="usersIds"
+                        type="number"
+                        >
+                    <option value="select-users">Select users</option>
+                        {userOptions}
+                    </select>
+
                     <label htmlFor="venueId">Venue</label>
-                    <input 
-                        name="venueId"
-                        id='venueId'
-                        onChange={handleNumValueChange}
-                        type="number" 
-                        placeholder="Pick venue..."/>
+                    <select
+                            name="venueId"
+                            id='venueId'
+                            onChange={handleNumValueChange}
+                            type="number" 
+                            >
+                        <option value="select-venue">Choose a venue</option>
+                        {venueOptions}
+                    </select>
+
                     <label htmlFor="hobbyId">Hobby</label>
-                    <input 
-                        name="hobbyId"
-                        id='hobbyId'
-                        onChange={handleNumValueChange}
-                        type="number" 
-                        placeholder="Pick hobby..."/>
+                    <select 
+                            name="hobbyId"
+                            id='hobbyId'
+                            onChange={handleNumValueChange}
+                            type="number" 
+                            >
+                        <option value="select-hobby">Choose a hobby</option>
+                        {hobbyOptions}
+                    </select>
                     <input type="submit" />
+
                 </form>
 
             </article>
