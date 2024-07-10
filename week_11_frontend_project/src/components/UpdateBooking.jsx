@@ -37,10 +37,10 @@ const UpdateBooking = ({allBookings, allVenues,allUsers, allHobbies, setAllBooki
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        updateTime(stateBooking, stateBooking.time);
-        updateDate(stateBooking, stateBooking.date);
-        updateVenue(stateBooking, stateBooking.venueId);
-        updateHobby(stateBooking, stateBooking.hobbyId);
+        updateTime(booking, stateBooking.time);
+        updateDate(booking, stateBooking.date);
+        updateVenue(booking, stateBooking.venueId);
+        updateHobby(booking, stateBooking.hobbyId);
         navigate("/");
     }
 
@@ -59,25 +59,29 @@ const UpdateBooking = ({allBookings, allVenues,allUsers, allHobbies, setAllBooki
                 <form onSubmit={handleFormSubmit}>
                     <label htmlFor="time">Time</label>
                     <input 
-                        name="name"
+                        name="time"
+                        id='time'
                         onChange={handleTextValueChange}
                         type="text" 
                         placeholder="Input time e.g. 18:00..."/>
                     <label htmlFor="date">Date</label>
                     <input 
-                        name="name"
+                        name="date"
+                        id='date'
                         onChange={handleTextValueChange}
                         type="text" 
-                        placeholder="Input date DD/MMYYYY..."/>
-                    <label htmlFor="venue">Venue</label>
+                        placeholder="Input date DD/MM/YYYY..."/>
+                    <label htmlFor="venueId">Venue</label>
                     <input 
-                        name="name"
+                        name="venueId"
+                        id='venueId'
                         onChange={handleNumValueChange}
                         type="number" 
                         placeholder="Pick venue..."/>
-                    <label htmlFor="hobby">Hobby</label>
+                    <label htmlFor="hobbyId">Hobby</label>
                     <input 
-                        name="name"
+                        name="hobbyId"
+                        id='hobbyId'
                         onChange={handleNumValueChange}
                         type="number" 
                         placeholder="Pick hobby..."/>

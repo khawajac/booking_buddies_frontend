@@ -98,7 +98,7 @@ const BookingBuddiesContainer = () => {
                     element: <CreateBooking allBookings={allBookings} allVenues={allVenues} allUsers={allUsers} allHobbies={allHobbies}/>
                   },
                   {
-                    path: "/:id/update-booking",
+                    path: "bookings/:id/update-booking",
                     loader: bookingLoader,
                     element: <UpdateBooking allBookings={allBookings} allVenues={allVenues} allUsers={allUsers} allHobbies={allHobbies} setAllBookings={setAllBookings} updateTime={updateTime} updateDate={updateDate} updateVenue={updateVenue} updateHobby={updateHobby}/>
                   }

@@ -14,8 +14,8 @@ const BookingList = ({allBookings}) => {
             <ul>
                 {mapBookings}
             </ul>
-            <label htmlFor="">Search</label>
-            <input type="text" placeholder="search..."/>
+            <label htmlFor="search">Search</label>
+            <input id = "search" type="text" placeholder="search..."/>
             <input type="submit" />
         </>
     )

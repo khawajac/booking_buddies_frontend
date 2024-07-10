@@ -11,12 +11,12 @@ const Booking = ( {booking} ) => {
     
     return (
         <>
-            <p>name of event</p>
+            <h2>name of event</h2>
             <p>time of booking</p>
             <p>date of booking</p>
             {/* <p>No of attendees: {users.length}</p> */}
             <button>delete</button>
-            <li><Link to = {`/${booking.id}/update-booking`}>Update Booking</Link></li>
+            <p><Link to = {`bookings/${booking.id}/update-booking`}>Update Booking</Link></p>
         </>
     )
 }
