@@ -97,11 +97,17 @@ const BookingBuddiesContainer = () => {
 
     return (
         <>
-            <header>Placeholder header</header>
+            <header>
+              <h1>Booking Buddies</h1>
+              <img src="src/assets/bookingbuddieslogo-removebg-preview.png" alt="booking buddies logo" />
+            </header>
             <main>
               <RouterProvider router={router}/>
             </main>
-            <footer>Placeheader footer</footer>
+            <footer>
+              <p>Contact Us: 122344</p>
+              <p>Address: Shrek Street</p>
+            </footer>
         </>
     )
 }
