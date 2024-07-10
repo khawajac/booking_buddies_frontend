@@ -11,9 +11,9 @@ const Booking = ( {booking} ) => {
     
     return (
         <>
-            <p>name of event</p>
-            <p>time of booking</p>
-            <p>date of booking</p>
+            <h2>{booking.hobby.name} at {booking.venue.name}</h2>
+            <p>{booking.time}</p>
+            <p>{booking.date}</p>
             {/* <p>No of attendees: {users.length}</p> */}
             <button>delete</button>
             <li><Link to = {`bookings/${booking.id}/update-booking`}>Update Booking</Link></li>
