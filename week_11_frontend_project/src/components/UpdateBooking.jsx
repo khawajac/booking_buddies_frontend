@@ -12,16 +12,22 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
     // const [date, setDate] = useState("");
     // const [venue, setVenue] = useState(0);
     // const [hobby, setHobby] = useState(0);
-    const [stateBooking, setstateBooking] = useState(
+    const usersIds = booking.users.map((user) => {
+        return user.id;
+    })
+    const [bookingDTO, setbookingDTO] = useState(
         {
             time: booking.time,
             date: booking.date,
-            userIds: booking.userIds,
+            usersIds: usersIds,
             venueId: booking.venue.id,
             hobbyId: booking.hobby.id,
         }
     )
+
+
    
+
     const usersNames = booking.users.map((user) => {
         return <p key={user.id}> {user.name}</p>
     })
@@ -41,25 +47,33 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
 
     const handleTextValueChange = (e) => {
         const propertyName = e.target.name;
-        const copiedBooking = { ...stateBooking };
+        const copiedBooking = { ...bookingDTO };
         copiedBooking[propertyName] = e.target.value;
-        setstateBooking(copiedBooking);
+        setbookingDTO(copiedBooking);
     }
 
+    const handleAddingUserId = (e) => {
+        const propertyName = e.target.id;
+        const copiedBooking = { ...bookingDTO };
+        const user = allUsers.filter((user) => {
+            user[e.target.value] == e.target.value
+        })
+        console.log(user);
+        copiedBooking[propertyName] =  [user.id,...usersIds];
+        setbookingDTO(copiedBooking);
+    }
+
+
     const handleNumValueChange = (e) => {
-        const propertyName = e.target.name;
-        const copiedBooking = { ...stateBooking };
-        copiedBooking[propertyName] = parseInt(e.target.value);
-        setstateBooking(copiedBooking);
+        const propertyName = e.target.id;
+        const copiedBooking = { ...bookingDTO };
+        copiedBooking[propertyName] = e.target.value;
+        setbookingDTO(copiedBooking);
     }
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        updateTime(booking, stateBooking.time);
-        updateDate(booking, stateBooking.date);
-        updateVenue(booking, stateBooking.venueId);
-        updateHobby(booking, stateBooking.hobbyId);
-        
+        updateBooking(booking,bookingDTO)
         navigate("/");
     }
 
@@ -98,6 +112,7 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
                     <select 
                         name="usersIds" 
                         id="usersIds"
+                        onChange={handleAddingUserId}
                         type="number"
                         >
                     <option value="select-users">Select users</option>
