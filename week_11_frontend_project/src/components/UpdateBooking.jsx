@@ -51,7 +51,6 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
         const newUser = allUsers.find((user) => {
             return user.id == e.target.value
         })
-        console.log(newUser);
         copiedBooking[propertyName] =  [newUser.id,...userIds];
         setbookingDTO(copiedBooking);
     }

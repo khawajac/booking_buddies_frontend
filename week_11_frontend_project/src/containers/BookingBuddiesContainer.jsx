@@ -53,7 +53,6 @@ const BookingBuddiesContainer = () => {
     }
 
     const postBooking = async (newBooking) => {
-      console.log("newBooking", newBooking); 
       const response = await fetch (`http://localhost:8080/bookings`, {
         method: "POST", 
         headers: {"Content-Type": "application/json"},
