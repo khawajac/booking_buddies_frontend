@@ -1,7 +1,7 @@
 import {useLoaderData, useNavigate} from 'react-router-dom'
 import {useState} from 'react'
 
-const UpdateBooking = ({allBookings, allVenues,allUsers, allHobbies, setAllBookings, updateTime, updateDate, updateVenue, updateHobby}) => {
+const UpdateBooking = ({allBookings, allVenues,allUsers, allHobbies, setAllBookings, updateBooking}) => {
 //    pass in setAllBookings
 
     const navigate = useNavigate();
@@ -16,11 +16,19 @@ const UpdateBooking = ({allBookings, allVenues,allUsers, allHobbies, setAllBooki
         {
             time: booking.time,
             date: booking.date,
+            userIds: booking.userIds,
             venueId: booking.venue.id,
-            hobbyId: booking.hobby.id
+            hobbyId: booking.hobby.id,
         }
     )
    
+    const userIds = booking.users.map((user) => {
+        return <p key={user.id}> {user.name}</p>
+
+    })
+
+
+
     const handleTextValueChange = (e) => {
         const propertyName = e.target.name;
         const copiedBooking = { ...stateBooking };
@@ -41,6 +49,7 @@ const UpdateBooking = ({allBookings, allVenues,allUsers, allHobbies, setAllBooki
         updateDate(booking, stateBooking.date);
         updateVenue(booking, stateBooking.venueId);
         updateHobby(booking, stateBooking.hobbyId);
+        
         navigate("/");
     }
 
@@ -51,6 +60,7 @@ const UpdateBooking = ({allBookings, allVenues,allUsers, allHobbies, setAllBooki
             <article>
                 <p>{booking.time}</p>
                 <p>{booking.date}</p>
+                {userIds}
                 <p>{booking.venue.name}</p>
                 <p>{booking.hobby.name}</p>
             </article>
