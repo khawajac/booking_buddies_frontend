@@ -45,6 +45,8 @@ const BookingBuddiesContainer = () => {
     }
 
     const updateBooking = async (booking, bookingDTO) => {
+      console.log(booking);
+      console.log(bookingDTO); 
       await fetch(`http://localhost:8080/bookings/${booking.id}`, {
           method: "PUT",
           headers: {"Content-Type": "application/json"},

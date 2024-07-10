@@ -12,14 +12,14 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
     // const [date, setDate] = useState("");
     // const [venue, setVenue] = useState(0);
     // const [hobby, setHobby] = useState(0);
-    const usersIds = booking.users.map((user) => {
+    const userIds = booking.users.map((user) => {
         return user.id;
     })
     const [bookingDTO, setbookingDTO] = useState(
         {
             time: booking.time,
             date: booking.date,
-            usersIds: usersIds,
+            userIds: userIds,
             venueId: booking.venue.id,
             hobbyId: booking.hobby.id,
         }
@@ -33,15 +33,15 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
     })
 
     const venueOptions = allVenues.map((venue) => {
-        return <option key={venue.id}>{venue.name}</option>
+        return <option key={venue.id} value={venue.id}>{venue.name}</option>
     })
 
     const hobbyOptions = allHobbies.map((hobby) => {
-        return <option key={hobby.id}>{hobby.name}</option>
+        return <option key={hobby.id} value={hobby.id}>{hobby.name}</option>
     })
 
     const userOptions = allUsers.map((user) => {
-        return <option key={user.id}>{user.name}</option>
+        return <option key={user.id} value={user.id}>{user.name}</option>
     })
 
 
@@ -53,13 +53,13 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
     }
 
     const handleAddingUserId = (e) => {
-        const propertyName = e.target.id;
+        const propertyName = e.target.name;
         const copiedBooking = { ...bookingDTO };
-        const user = allUsers.filter((user) => {
-            user[e.target.value] == e.target.value
+        const newUser = allUsers.find((user) => {
+            return user.id == e.target.value
         })
-        console.log(user);
-        copiedBooking[propertyName] =  [user.id,...usersIds];
+        console.log(newUser);
+        copiedBooking[propertyName] =  [newUser.id,...userIds];
         setbookingDTO(copiedBooking);
     }
 
@@ -108,10 +108,10 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
                         type="text" 
                         placeholder="Input date DD/MM/YYYY..."/>
 
-                    <label htmlFor="usersIds">Users</label>
+                    <label htmlFor="userIds">Users</label>
                     <select 
-                        name="usersIds" 
-                        id="usersIds"
+                        name="userIds" 
+                        id="userIds"
                         onChange={handleAddingUserId}
                         type="number"
                         >
