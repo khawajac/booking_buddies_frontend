@@ -75,7 +75,7 @@ const CreateBooking = ({allVenues, allUsers, allHobbies, postBooking}) => {
                         name="time"
                         id='time'
                         onChange={handleTextValueChange}
-                        type="text" 
+                        type="time" 
                         placeholder="Input time e.g. 18:00..."/>
                     <label htmlFor="date">Date</label>
                     <input 

@@ -45,6 +45,14 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
         setbookingDTO(copiedBooking);
     }
 
+    const handleDateChange = (e) => {
+        const propertyName =  e.target.name;
+        const date = new Date(e.target.value).toLocaleDateString();
+        const copiedBooking = { ...bookingDTO };
+        copiedBooking[propertyName] = date;
+        setbookingDTO(copiedBooking);
+    }
+
     const handleAddingUserId = (e) => {
         const propertyName = e.target.name;
         const copiedBooking = { ...bookingDTO };
@@ -70,7 +78,6 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
     }
 
 
-
     return (
         booking ? 
 
@@ -90,14 +97,14 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
                         name="time"
                         id='time'
                         onChange={handleTextValueChange}
-                        type="text" 
+                        type="time" 
                         placeholder="Input time e.g. 18:00..."/>
                     <label htmlFor="date">Date</label>
                     <input 
                         name="date"
                         id='date'
-                        onChange={handleTextValueChange}
-                        type="text" 
+                        onChange={handleDateChange}
+                        type="date" 
                         placeholder="Input date DD/MM/YYYY..."/>
 
                     <label htmlFor="userIds">Users</label>
@@ -107,7 +114,7 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
                         onChange={handleAddingUserId}
                         type="number"
                         >
-                    <option value="select-users">Select users</option>
+                    <option value="select-users" >Select users</option>
                         {userOptions}
                     </select>
 
@@ -118,7 +125,7 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
                             onChange={handleNumValueChange}
                             type="number" 
                             >
-                        <option value="select-venue">Choose a venue</option>
+                        <option value="select-venue" >Choose a venue</option>
                         {venueOptions}
                     </select>
 
@@ -129,7 +136,7 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
                             onChange={handleNumValueChange}
                             type="number" 
                             >
-                        <option value="select-hobby">Choose a hobby</option>
+                        <option value="select-hobby" >Choose a hobby</option>
                         {hobbyOptions}
                     </select>
                     <input type="submit" />
