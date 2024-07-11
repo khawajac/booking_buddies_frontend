@@ -44,6 +44,41 @@ const BookingBuddiesContainer = () => {
     return booking;
     }
 
+    const updateBooking = async (booking, bookingDTO) => { 
+      const response = await fetch(`http://localhost:8080/bookings/${booking.id}`, {
+          method: "PUT",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify(bookingDTO)
+      });
+      console.log(response);
+      const updatedBooking = await response.json();
+      const upToDateBookings = allBookings.map((booking) => {
+        if (booking.id != updatedBooking.id) {
+          return booking;
+        } else {
+          return updatedBooking;
+        }
+      })
+      setAllBookings(upToDateBookings);
+    }
+
+    const postBooking = async (newBooking) => {
+      const response = await fetch (`http://localhost:8080/bookings`, {
+        method: "POST", 
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(newBooking)
+      }); 
+      const savedBooking = await response.json();
+      setAllBookings([...allBookings, savedBooking]); 
+    }
+
+    const deleteBooking = async (idToDelete) => {
+      await fetch(`http://localhost:8080/bookings/${idToDelete}`, {
+        method: "DELETE"
+      })
+      setAllBookings([...allBookings.filter((booking) => booking.id != idToDelete)])
+    }
+
     useEffect(() => {
       fetchAllBookings(),
       fetchAllVenues(),
@@ -59,16 +94,16 @@ const BookingBuddiesContainer = () => {
                 children : [
                   {
                     path: "/",           
-                    element: <BookingList allBookings={allBookings}/>,
+                    element: <BookingList allBookings={allBookings} deleteBooking={deleteBooking}/>,
                   },
                   {
                     path: "/create-booking",
-                    element: <CreateBooking allBookings={allBookings} allVenues={allVenues} allUsers={allUsers} allHobbies={allHobbies}/>
+                    element: <CreateBooking allVenues={allVenues} allUsers={allUsers} allHobbies={allHobbies} postBooking={postBooking}/>
                   },
                   {
-                    path: "/:id/update-booking",
+                    path: "bookings/:id/update-booking",
                     loader: bookingLoader,
-                    element: <UpdateBooking allBookings={allBookings} allVenues={allVenues} allUsers={allUsers} allHobbies={allHobbies}/>
+                    element: <UpdateBooking allBookings={allBookings} allVenues={allVenues} allUsers={allUsers} allHobbies={allHobbies} setAllBookings={setAllBookings} updateBooking={updateBooking} />
                   }
                 ]
               }
@@ -77,11 +112,17 @@ const BookingBuddiesContainer = () => {
 
     return (
         <>
-            <header>Placeholder header</header>
+            <header>
+              <h1>Booking Buddies</h1>
+              <img src="src/assets/bookingbuddieslogo-removebg-preview.png" alt="booking buddies logo" />
+            </header>
             <main>
               <RouterProvider router={router}/>
             </main>
-            <footer>Placeheader footer</footer>
+            <footer>
+              <p>Contact Us: 122344</p>
+              <p>Address: Shrek Street</p>
+            </footer>
         </>
     )
 }
