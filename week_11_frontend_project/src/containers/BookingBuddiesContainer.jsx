@@ -50,6 +50,7 @@ const BookingBuddiesContainer = () => {
           headers: {"Content-Type": "application/json"},
           body: JSON.stringify(bookingDTO)
       });
+      fetchAllBookings();
     }
 
     const postBooking = async (newBooking) => {
@@ -61,8 +62,6 @@ const BookingBuddiesContainer = () => {
       const savedBooking = await response.json();
       setAllBookings([...allBookings, savedBooking]); 
     }
-
-    
 
     useEffect(() => {
       fetchAllBookings(),
