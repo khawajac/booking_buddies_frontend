@@ -3,8 +3,8 @@
 Booking Buddies, because your sofa has seen enough of you.
 
 ## Description
+This project was built using the Booking Buddies API, providing a dynamic frontend from the admin/event planner's point of view, this way ensures that other users can't manipulate or remove other user's data. Here the admin can create, update and delete bookings. 
 
-Booking Buddies is a RESTful API built using the Java Spring Boot framework and utilises PostgreSQL for database management. The idea behind our API is to connect users based around common hobbies. Allowing them to book activities based around those hobbies and get off that sofa! Using our API you can create a user profile, assign yourself a hobby such as basketball and either join or create a booking based around your hobby.
 
 ## Features
 
@@ -22,7 +22,7 @@ Here are a few of the features included within our application.
 * Create a nav bar containing each webpage
 * Add styling
 
-### Extension:
+### Extensions:
 
 * Provide a webpage for creating, updating and deleting Hobbies, Venues and Users
 * Manage a Hobby, Venue or User by:
@@ -48,12 +48,14 @@ Here are a few of the features included within our application.
 * When submitting an updated booking, the newly updated booking wasn't rendering on the dashboard without refreshing
 * Couldn't load data into UpdateBooking component with loader function
 
+
 ## Troubles
 
 * Variable renaming was the solution for a lot of issues
 * Needed specific paths for each booking
 * Needed helper files , rather than one 'God' container
 * Drawing component diagram, we felt like we were adding too many pages
+
 
 ## Installation
 
