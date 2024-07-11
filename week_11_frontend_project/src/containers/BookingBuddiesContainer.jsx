@@ -45,22 +45,40 @@ const BookingBuddiesContainer = () => {
     }
 
     const updateBooking = async (booking, bookingDTO) => { 
-      await fetch(`http://localhost:8080/bookings/${booking.id}`, {
+      const response = await fetch(`http://localhost:8080/bookings/${booking.id}`, {
           method: "PUT",
           headers: {"Content-Type": "application/json"},
           body: JSON.stringify(bookingDTO)
       });
-      fetchAllBookings();
+      console.log(response);
+      const updatedBooking = await response.json();
+      const upToDateBookings = allBookings.map((booking) => {
+        if (booking.id != updatedBooking.id) {
+          return booking;
+        } else {
+          return updatedBooking;
+        }
+      })
+      setAllBookings(upToDateBookings);
     }
 
     const postBooking = async (newBooking) => {
       const response = await fetch (`http://localhost:8080/bookings`, {
         method: "POST", 
         headers: {"Content-Type": "application/json"},
-          body: JSON.stringify(newBooking)
+        body: JSON.stringify(newBooking)
       }); 
       const savedBooking = await response.json();
       setAllBookings([...allBookings, savedBooking]); 
+    }
+
+    const deleteBooking = async(idToDelete) => {
+      await fetch(`http://localhost:8080/bookings/${idToDelete}`, {
+        method: "DELETE"
+      })
+      setAllBookings([allBookings.filter((booking) => {
+        booking.id != idToDelete
+      })])
     }
 
     useEffect(() => {
@@ -78,7 +96,7 @@ const BookingBuddiesContainer = () => {
                 children : [
                   {
                     path: "/",           
-                    element: <BookingList allBookings={allBookings}/>,
+                    element: <BookingList allBookings={allBookings} deleteBooking={deleteBooking}/>,
                   },
                   {
                     path: "/create-booking",

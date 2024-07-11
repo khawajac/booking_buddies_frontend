@@ -1,9 +1,9 @@
 import Booking from "./Booking"
 
-const BookingList = ({allBookings}) => {
+const BookingList = ({allBookings, deleteBooking}) => {
     
     const mapBookings = allBookings.map((booking) => {
-        return <Booking booking={booking} key={booking.id}/>
+        return <Booking booking={booking} key={booking.id} deleteBooking={deleteBooking}/>
     })
     
     

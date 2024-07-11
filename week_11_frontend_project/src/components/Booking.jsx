@@ -1,13 +1,15 @@
 import {Link} from 'react-router-dom'
 
-const Booking = ( {booking} ) => {
+const Booking = ( {booking, deleteBooking} ) => {
     // venue.name
     // hobby.name
     // users.length
     // handleDelete
 
     //Ext - Add popup for delete functionality (e.g.eare you sure popup)
-    
+    const handleDelete = () => {
+        deleteBooking(booking.id);
+    }
     
     return (
         <>
@@ -18,7 +20,7 @@ const Booking = ( {booking} ) => {
             {/* <p>No of attendees: {users.length}</p> */}
             <div className='booking-buttons'>
             <button className='update-button'><Link to = {`bookings/${booking.id}/update-booking`}>Update Booking</Link></button>
-                <button className='delete-button'>Delete</button>
+                <button onClick={handleDelete} className='delete-button'>Delete</button>
             </div>
         </section>
         </>
