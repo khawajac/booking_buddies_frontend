@@ -9,6 +9,7 @@ const BookingList = ({allBookings}) => {
     
     return (
         <>
+        <section id='list-section'>
             <h1>Events Dashboard</h1>
             <h2>Upcoming bookings</h2>
             <div className="container">
@@ -19,6 +20,8 @@ const BookingList = ({allBookings}) => {
             <label htmlFor="search">Search</label>
             <input id = "search" type="text" placeholder="search..."/>
             <input type="submit" />
+        </section>
+            
         </>
     )
 }

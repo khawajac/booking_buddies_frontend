@@ -15,7 +15,15 @@ body {
   text-align: center;
 }
 
- footer {
+body h1, h2 {
+  color: white;
+}
+
+.list-section {
+  color: white;
+}
+
+footer {
   margin: 5;
   color: #484848;
   padding: 2rem;
@@ -68,12 +76,13 @@ nav ul li a:hover {
 }
 
 main {
-  background-color: #1775bc;
+  background-color: #000000;
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 0 auto; 
-  width: 100%;
+  width: 1200px;
+  color: black;
   max-width: 1200px;
 }
 
