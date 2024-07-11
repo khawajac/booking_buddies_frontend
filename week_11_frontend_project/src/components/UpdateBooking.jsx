@@ -11,15 +11,21 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
     const userIds = booking.users.map((user) => {
         return user.id;
     })
+
+    const correctDateFormat = () => {
+        return new Date(booking.date).toLocaleDateString();
+    }
+
     const [bookingDTO, setbookingDTO] = useState(
         {
-            time: booking.time,
-            date: booking.date,
+            time: booking.time.substring(0,5),
+            date: correctDateFormat(),
             userIds: userIds,
             venueId: booking.venue.id,
             hobbyId: booking.hobby.id,
         }
     )
+    console.log(bookingDTO.date);
 
     const usersNames = booking.users.map((user) => {
         return <p key={user.id}> {user.name}</p>
@@ -47,7 +53,9 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
 
     const handleDateChange = (e) => {
         const propertyName =  e.target.name;
+        console.log("input date",e.target.value);
         const date = new Date(e.target.value).toLocaleDateString();
+        console.log("formatted date",date);
         const copiedBooking = { ...bookingDTO };
         copiedBooking[propertyName] = date;
         setbookingDTO(copiedBooking);
@@ -97,14 +105,16 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
                         name="time"
                         id='time'
                         onChange={handleTextValueChange}
-                        type="time" 
+                        type="time"
+                        value={bookingDTO.time} 
                         placeholder="Input time e.g. 18:00..."/>
                     <label htmlFor="date">Date</label>
                     <input 
                         name="date"
                         id='date'
                         onChange={handleDateChange}
-                        type="date" 
+                        type="date"
+                        value={bookingDTO.date} 
                         placeholder="Input date DD/MM/YYYY..."/>
 
                     <label htmlFor="userIds">Users</label>
@@ -113,6 +123,7 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
                         id="userIds"
                         onChange={handleAddingUserId}
                         type="number"
+                        value={bookingDTO.userIds[0]}
                         >
                     <option value="select-users" >Select users</option>
                         {userOptions}
@@ -123,7 +134,8 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
                             name="venueId"
                             id='venueId'
                             onChange={handleNumValueChange}
-                            type="number" 
+                            type="number"
+                            value={bookingDTO.venueId} 
                             >
                         <option value="select-venue" >Choose a venue</option>
                         {venueOptions}
@@ -134,7 +146,8 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
                             name="hobbyId"
                             id='hobbyId'
                             onChange={handleNumValueChange}
-                            type="number" 
+                            type="number"
+                            value={bookingDTO.hobbyId} 
                             >
                         <option value="select-hobby" >Choose a hobby</option>
                         {hobbyOptions}
