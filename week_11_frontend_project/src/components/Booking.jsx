@@ -1,14 +1,11 @@
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 const Booking = ( {booking, deleteBooking} ) => {
-    // venue.name
-    // hobby.name
-    // users.length
-    // handleDelete
-
-    //Ext - Add popup for delete functionality (e.g.eare you sure popup)
+    const navigate = useNavigate();
     const handleDelete = () => {
         deleteBooking(booking.id);
+        navigate("/")
+    
     }
     
     return (
@@ -27,4 +24,4 @@ const Booking = ( {booking, deleteBooking} ) => {
     )
 }
 
-export default Booking
+export default Booking; 

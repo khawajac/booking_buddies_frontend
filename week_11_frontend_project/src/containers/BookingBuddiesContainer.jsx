@@ -72,13 +72,11 @@ const BookingBuddiesContainer = () => {
       setAllBookings([...allBookings, savedBooking]); 
     }
 
-    const deleteBooking = async(idToDelete) => {
+    const deleteBooking = async (idToDelete) => {
       await fetch(`http://localhost:8080/bookings/${idToDelete}`, {
         method: "DELETE"
       })
-      setAllBookings([allBookings.filter((booking) => {
-        booking.id != idToDelete
-      })])
+      setAllBookings([...allBookings.filter((booking) => booking.id != idToDelete)])
     }
 
     useEffect(() => {

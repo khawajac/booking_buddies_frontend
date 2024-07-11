@@ -48,7 +48,6 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
 
     const handleDateChange = (e) => {
         const propertyName =  e.target.name;
-        const date = new Date(e.target.value).toLocaleDateString();
         const copiedBooking = { ...bookingDTO };
         copiedBooking[propertyName] = e.target.value;
         setbookingDTO(copiedBooking);

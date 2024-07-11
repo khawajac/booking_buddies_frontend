@@ -51,9 +51,18 @@ const CreateBooking = ({allVenues, allUsers, allHobbies, postBooking}) => {
         setNewBookingDTO(copiedBooking);
     }
 
+    const handleDateChange = (e) => {
+        const propertyName =  e.target.name;
+        const copiedBooking = { ...newBookingDTO };
+        copiedBooking[propertyName] = e.target.value;
+        setNewBookingDTO(copiedBooking);
+    }
+
     const handleFormSubmit = (e) => {
         e.preventDefault(); 
-        postBooking(newBookingDTO);
+        const createdBooking = {...newBookingDTO}
+        createdBooking.date = new Date(newBookingDTO.date).toLocaleDateString()
+        postBooking(createdBooking);
         setNewBookingDTO({
             time: "",
             date: "",
@@ -81,8 +90,8 @@ const CreateBooking = ({allVenues, allUsers, allHobbies, postBooking}) => {
                     <input 
                         name="date"
                         id='date'
-                        onChange={handleTextValueChange}
-                        type="text" 
+                        onChange={handleDateChange}
+                        type="date" 
                         placeholder="Input date DD/MM/YYYY..."/>
 
                     <label htmlFor="userIds">Users</label>
