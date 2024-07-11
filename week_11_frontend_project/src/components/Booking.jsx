@@ -11,12 +11,16 @@ const Booking = ( {booking} ) => {
     
     return (
         <>
+        <section className='booking-container'>
             <h2>{booking.hobby.name} at {booking.venue.name}</h2>
             <p>{booking.time}</p>
             <p>{booking.date}</p>
             {/* <p>No of attendees: {users.length}</p> */}
-            <button>delete</button>
-            <li><Link to = {`bookings/${booking.id}/update-booking`}>Update Booking</Link></li>
+            <div className='booking-buttons'>
+            <button className='update-button'><Link to = {`bookings/${booking.id}/update-booking`}>Update Booking</Link></button>
+                <button className='delete-button'>Delete</button>
+            </div>
+        </section>
         </>
     )
 }
