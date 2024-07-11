@@ -85,11 +85,8 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
 
         <>
             <article>
-                <p>{booking.time}</p>
-                <p>{booking.date}</p>
+                <img src="src/assets/wembley-stadium-.png" alt="pic of wembly" />
                 {usersNames}
-                <p>{booking.venue.name}</p>
-                <p>{booking.hobby.name}</p>
             </article>
 
             <article>

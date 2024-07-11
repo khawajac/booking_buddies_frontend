@@ -7,13 +7,16 @@ const Booking = ( {booking, deleteBooking} ) => {
         navigate("/")
     
     }
-    
+
+    const formattedDate = new Date(booking.date).toLocaleDateString()
+    const formattedTime = booking.time.substring(0,5); 
+
     return (
         <>
         <section className='booking-container'>
             <h2>{booking.hobby.name} at {booking.venue.name}</h2>
-            <p>{booking.time}</p>
-            <p>{booking.date}</p>
+            <p><strong>{formattedTime}</strong></p>
+            <p><strong>{formattedDate}</strong></p>
             {/* <p>No of attendees: {users.length}</p> */}
             <div className='booking-buttons'>
             <button className='update-button'><Link to = {`bookings/${booking.id}/update-booking`}>Update Booking</Link></button>

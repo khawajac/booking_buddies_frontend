@@ -120,8 +120,10 @@ const BookingBuddiesContainer = () => {
               <RouterProvider router={router}/>
             </main>
             <footer>
-              <p>Contact Us: 122344</p>
-              <p>Address: Shrek Street</p>
+              <div>
+                <p><strong>Contact Us: 122344</strong></p>
+                <p><strong>Address: Shrek Street</strong></p>
+              </div>
             </footer>
         </>
     )
