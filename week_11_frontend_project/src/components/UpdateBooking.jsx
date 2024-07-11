@@ -12,20 +12,15 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
         return user.id;
     })
 
-    const correctDateFormat = () => {
-        return new Date(booking.date).toLocaleDateString();
-    }
-
     const [bookingDTO, setbookingDTO] = useState(
         {
             time: booking.time.substring(0,5),
-            date: correctDateFormat(),
+            date: booking.date,
             userIds: userIds,
             venueId: booking.venue.id,
             hobbyId: booking.hobby.id,
         }
     )
-    console.log(bookingDTO.date);
 
     const usersNames = booking.users.map((user) => {
         return <p key={user.id}> {user.name}</p>
@@ -53,11 +48,9 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
 
     const handleDateChange = (e) => {
         const propertyName =  e.target.name;
-        console.log("input date",e.target.value);
         const date = new Date(e.target.value).toLocaleDateString();
-        console.log("formatted date",date);
         const copiedBooking = { ...bookingDTO };
-        copiedBooking[propertyName] = date;
+        copiedBooking[propertyName] = e.target.value;
         setbookingDTO(copiedBooking);
     }
 
@@ -81,7 +74,9 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        updateBooking(booking,bookingDTO)
+        const updatedBooking = {...bookingDTO}
+        updatedBooking.date = new Date(bookingDTO.date).toLocaleDateString()
+        updateBooking(booking,updatedBooking)
         navigate("/");
     }
 
