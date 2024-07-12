@@ -3,7 +3,7 @@
 Booking Buddies, because your sofa has seen enough of you.
 
 ## Description
-This project was built using the Booking Buddies API, providing a dynamic frontend from the admin/event planner's point of view, this way ensures that other users can't manipulate or remove other user's data. Here the admin can create, update and delete bookings. 
+This project was built using the Booking Buddies API, providing a dynamic frontend from an event planner's point of view. Here the admin can create, update and delete bookings. 
 
 
 ## Features
@@ -43,18 +43,16 @@ Here are a few of the features included within our application.
 
 ## Bugs
 
-* Couldn't patch multiple attributes of a booking simultaneously
-* Since we changed the format of the input to the date picker, couldn't pre-populate the date input on the updateBooking form. 
-* When submitting an updated booking, the newly updated booking wasn't rendering on the dashboard without refreshing
-* Couldn't load data into UpdateBooking component with loader function
+* Couldn't patch multiple attributes of a booking simultaneously.
+* Since we changed the format of the input to a date picker, couldn't pre-populate the date input on the update booking form. 
+* When submitting an updated booking, the newly updated booking wasn't rendering on the dashboard without refreshing.
+* Couldn't load data into update booking component with loader function.
 
 
 ## Troubles
 
-* Variable renaming was the solution for a lot of issues
-* Needed specific paths for each booking
-* Needed helper files , rather than one 'God' container
-* Drawing component diagram, we felt like we were adding too many pages
+* Variable renaming was the solution for a lot of issues.
+* Drawing component diagram, we added too many pages and blurred the lines between MVP and extensions. 
 
 
 ## Installation
