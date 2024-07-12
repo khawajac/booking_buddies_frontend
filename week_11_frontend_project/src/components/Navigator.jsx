@@ -8,7 +8,7 @@ const Navigator = () => {
                     <li><Link to = "/">Home</Link></li>
                     <li><Link to = "/create-booking">Create Booking</Link></li>
                     <li><Link to = "/">Create Hobby</Link></li>
-                    <li><Link to = "/">Create Venue</Link></li>
+                    <li><Link to = "/create-venue">Create Venue</Link></li>
                     <li><Link to = "/">Create User</Link></li>
                 </ul>
             </nav>

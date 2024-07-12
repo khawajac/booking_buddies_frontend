@@ -63,9 +63,9 @@ nav ul li {
   margin-left: 20px;
 }
 
-/* .update-article {
-  background-image: url("./assets/wembley2-removebg-preview.png");
-} */
+.update-article {
+  color: white;
+}
 
 .user-names {
   color: white;

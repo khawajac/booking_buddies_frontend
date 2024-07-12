@@ -6,7 +6,7 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
 
     const navigate = useNavigate();
 
-    const booking = useLoaderData()
+    const booking = useLoaderData();
 
     const userIds = booking.users.map((user) => {
         return user.id;

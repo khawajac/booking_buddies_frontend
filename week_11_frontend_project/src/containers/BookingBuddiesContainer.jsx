@@ -3,6 +3,7 @@ import Navigator from '../components/Navigator'
 import CreateBooking from '../components/CreateBooking'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import UpdateBooking from "../components/UpdateBooking"
+import CreateVenue from "../components/CreateVenue"
 import { useState, useEffect } from "react"
 
 const BookingBuddiesContainer = () => {
@@ -44,13 +45,19 @@ const BookingBuddiesContainer = () => {
     return booking;
     }
 
+    // const venueLoader = ({params}) => {
+    //   const venue = allVenues.find(venue => {
+    //     return venue.id === parseInt(params.id)
+    //   })
+    //   return venue;
+    // }
+
     const updateBooking = async (booking, bookingDTO) => { 
       const response = await fetch(`http://localhost:8080/bookings/${booking.id}`, {
           method: "PUT",
           headers: {"Content-Type": "application/json"},
           body: JSON.stringify(bookingDTO)
       });
-      console.log(response);
       const updatedBooking = await response.json();
       const upToDateBookings = allBookings.map((booking) => {
         if (booking.id != updatedBooking.id) {
@@ -72,11 +79,13 @@ const BookingBuddiesContainer = () => {
       setAllBookings([...allBookings, savedBooking]); 
     }
 
-    const deleteBooking = async (idToDelete) => {
+    const deleteBooking = async(idToDelete) => {
       await fetch(`http://localhost:8080/bookings/${idToDelete}`, {
         method: "DELETE"
       })
-      setAllBookings([...allBookings.filter((booking) => booking.id != idToDelete)])
+      setAllBookings([allBookings.filter((booking) => {
+        booking.id != idToDelete
+      })])
     }
 
     useEffect(() => {
@@ -104,6 +113,11 @@ const BookingBuddiesContainer = () => {
                     path: "bookings/:id/update-booking",
                     loader: bookingLoader,
                     element: <UpdateBooking allBookings={allBookings} allVenues={allVenues} allUsers={allUsers} allHobbies={allHobbies} setAllBookings={setAllBookings} updateBooking={updateBooking} />
+                  },
+                  {
+                    path: "/create-venue",
+                    // loader: venueLoader,
+                    element: <CreateVenue allVenues={allVenues}/>
                   }
                 ]
               }
@@ -120,10 +134,8 @@ const BookingBuddiesContainer = () => {
               <RouterProvider router={router}/>
             </main>
             <footer>
-              <div>
-                <p><strong>Contact Us: 122344</strong></p>
-                <p><strong>Address: Shrek Street</strong></p>
-              </div>
+              <p>Contact Us: 122344</p>
+              <p>Address: Shrek Street</p>
             </footer>
         </>
     )
