@@ -23,7 +23,7 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
     )
 
     const usersNames = booking.users.map((user) => {
-        return <p key={user.id}> {user.name}</p>
+        return <p className="user-names" key={user.id}> {user.name}</p>
     })
 
     const venueOptions = allVenues.map((venue) => {
@@ -84,10 +84,11 @@ const UpdateBooking = ({allBookings, allVenues, allUsers, allHobbies, setAllBook
         booking ? 
 
         <>
-            <article>
-                <img src="src/assets/wembley-stadium-.png" alt="pic of wembly" />
-                {usersNames}
-            </article>
+            <div>
+                <article className='update-article'>
+                    {usersNames}
+                </article>
+            </div>
 
             <article>
                 <form onSubmit={handleFormSubmit}>
