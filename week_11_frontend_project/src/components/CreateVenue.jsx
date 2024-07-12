@@ -16,7 +16,7 @@ const CreateVenue = ({allVenues}) => {
         if (allVenues.length < 1) {
             return <p>Loading venues</p>
         }
-        return <li className="update-article" key={venue.id}>{venue.name}, {venue.location}</li>
+        return <p className="update-article" key={venue.id}>{venue.name}, {venue.location}</p>
     })
 
     return (
