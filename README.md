@@ -78,4 +78,4 @@ The API will then be available at **http://localhost:5173**
 * [Robbie Mcilwaine](https://github.com/robbiemcilwaine)
 * [Adil Iqbal](https://github.com/AdilIqbal95)
 * [Dena Shiranipour](https://github.com/dena-shiranipour)
-* [Charisma Khawaja](https://github.com/ornerykiwi)
+* [Charisma Khawaja](https://github.com/khawajac)
