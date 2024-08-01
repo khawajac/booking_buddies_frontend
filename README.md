@@ -5,7 +5,17 @@ Booking Buddies, because your sofa has seen enough of you.
 ## Description
 This project was built using the Booking Buddies API, providing a dynamic frontend from an event planner's point of view. Here the admin can create, update and delete bookings. 
 
+## Technologies and Tools
 
+* JavaScript/React
+* HTML/CSS
+
+## Dependencies:
+
+* react
+* react-dom
+* react-router-dom
+  
 ## Features
 
 Here are a few of the features included within our application.
@@ -62,17 +72,6 @@ Here are a few of the features included within our application.
 3. **Build and Run the Application in IntelliJ**
 
 The API will then be available at **http://localhost:5173**
-
-## Technologies and Tools
-
-* JavaScript/React
-* HTML/CSS
-
-## Dependencies:
-
-* react
-* react-dom
-* react-router-dom
 
 ## Contributors:
 
