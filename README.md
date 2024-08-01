@@ -41,20 +41,6 @@ Here are a few of the features included within our application.
 ![create-booking](week_11_frontend_project/src/assets/create-booking.png)
 ![update-booking](week_11_frontend_project/src/assets/update-booking.png)
 
-## Bugs
-
-* Couldn't patch multiple attributes of a booking simultaneously.
-* Since we changed the format of the input to a date picker, couldn't pre-populate the date input on the update booking form. 
-* When submitting an updated booking, the newly updated booking wasn't rendering on the dashboard without refreshing.
-* Couldn't load data into update booking component with loader function.
-
-
-## Troubles
-
-* Variable renaming was the solution for a lot of issues.
-* Drawing component diagram, we added too many pages and blurred the lines between MVP and extensions. 
-
-
 ## Installation
 
 1. **Clone the repository**:
